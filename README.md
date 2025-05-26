@@ -67,9 +67,13 @@ python3 /root/semantic_lidar.py
 
 ## Efekt działania
 
-- W Carla GUI widoczny sensor semantic LiDAR na pojeździe `ego_vehicle`
-- W RViz2: chmura punktów `/semantic_lidar_colored` z kolorem zależnym od klasy (np. strzałka w lewo – zielony)
-- Konsola ROS 2: logi informujące o rozpoznaniu znaków poziomych
+- Kolorowa chmura `/semantic_lidar_colored` widoczna w RViz2
+- W terminalu:
+
+```
+Wykryto 2 klastrów typu: arrow_left
+Wykryto 1 klastrów typu: stop_line
+```
 
 ---
 
