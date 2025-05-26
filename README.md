@@ -21,33 +21,48 @@ Repozytorium zawiera kod i instrukcję uruchomienia węzła ROS 2 do przetwarzan
 ### 1. Uruchomienie Carla
 
 ```bash
-docker run --rm -it --gpus all \
-    -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
-    carlasim/carla:0.9.15 ./CarlaUE4.sh -opengl
+docker run --privileged --gpus all --net=host -e DISPLAY=$DISPLAY \
+  carlasim/carla:0.9.15 /bin/bash ./CarlaUE4.sh -RenderOffScreen -prefernvidia -quality-level=Low
 ```
 
 ### 2. Uruchomienie Carla-Autoware-Bridge
 
 ```bash
-docker compose -f bridge_compose.yaml up
+docker run -it -e -RMW_IMPLEMENTATION=rmw_cyclonedds_cpp --network host tumgeka/carla-autoware-bridge:latest
 ```
 
-Upewnij się, że wybrana jest mapa `Town10HD` oraz sensor kit `carla_t2_sensor_kit`.
+następnie:
+```bash
+ros2 launch carla_autoware_bridge carla_aw_bridge.launch.py town:=Town10HD timeout:=500
+```
 
-### 3. Uruchomienie ROS 2 i węzła semantic_lidar
+### 3. Uruchomienie ROS 2
 
 W osobnym terminalu:
 
 ```bash
-rocker --nvidia --x11 osrf/ros:humble-desktop
-# wewnątrz kontenera:
-cd ~/your_workspace/
-colcon build
-. install/setup.bash
-
-ros2 run your_package semantic_lidar.py
+rocker --network=host -e  RMW_IMPLEMENTTION=rmw_cyclonedds_cpp -e LIBGL_ALWAYS_SOFTWARE=1 --x11 --nvidia --volume ~/carla:/home/krzysztof-rzym/carla -- ghcr.io/autowarefoundation/autoware:humble-2024.01-cuda-amd64
 ```
 
+następnie:
+```bash
+cd /home/krzysztof-rzym/carla/autoware/
+
+source install/setup.bash
+	
+ros2 launch autoware_launch e2e_simulator.launch.xml vehicle_model:=carla_t2_vehicle sensor_model:=carla_t2_sensor_kit map_path:=/home/krzysztof-rzym/carla/Town10
+```
+
+### 4. Uruchomienie Semantic lidar 
+```bash
+docker cp ~/carla_lidar_ros2/semantic_lidar.py [nazwa kontenera]:/root/
+
+docker exec -it [nazwa kontenera] bash
+
+pip3 install scikit-learn
+source /opt/ros/humble/setup.bash
+python3 /root/semantic_lidar.py
+```
 ---
 
 ## Efekt działania
