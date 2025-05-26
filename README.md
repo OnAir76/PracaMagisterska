@@ -102,8 +102,12 @@ Wykryto 1 klastrów typu: stop_line
 ## Zrzuty ekranu
 
 - `arrow_left.png` – wykryta strzałka w lewo
+  
 - `stop_line.png` – wykryta linia STOP
+  
+![image](https://github.com/user-attachments/assets/8f3184f1-4907-4637-b949-7e214a6211df)
 - `pedestrian_crossing.png` – wykryte pasy
+  
 - `semantic_lidar_rviz2.png` – podgląd w RViz2
 
 ---
