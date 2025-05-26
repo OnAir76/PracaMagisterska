@@ -101,8 +101,6 @@ Wykryto 1 klastrów typu: stop_line
 
 ## Zrzuty ekranu
 
-Zrzuty znajdują się w folderze `screenshots/`.
-
 - `arrow_left.png` – wykryta strzałka w lewo
 - `stop_line.png` – wykryta linia STOP
 - `pedestrian_crossing.png` – wykryte pasy
