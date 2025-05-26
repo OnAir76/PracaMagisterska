@@ -2,6 +2,16 @@
 
 Repozytorium zawiera kod i instrukcję uruchomienia węzła ROS 2 do przetwarzania danych z sensora Semantic LiDAR w środowisku Carla.
 
+- odbiera dane z sensora `sensor.lidar.ray_cast_semantic` w Carla 0.9.15,
+- filtruje punkty z oznakowaniem poziomym (tag 24),
+- grupuje je w klastry i klasyfikuje jako:
+  - strzałka w lewo (zielony)
+  - strzałka w prawo (niebieski)
+  - linia STOP (czerwony)
+  - pasy dla pieszych (błękitny)
+- wizualizuje kolorową chmurę punktów w RViz2,
+- wypisuje do terminala liczbę wykrytych znaków.
+
 ---
 
 ## Wymagania
