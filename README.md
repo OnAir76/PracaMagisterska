@@ -11,7 +11,7 @@ Repozytorium zawiera kod i instrukcję uruchomienia węzła ROS 2 do przetwarzan
 - Carla 0.9.15 (Docker)
 - Carla-Autoware-Bridge (Docker)
 - Autoware (rocker)
-- Python 3.8+
+- Python 3.7+
 - Pakiety Python: `numpy`, `sklearn`, `rclpy`, `tf2_ros`
 
 ---
@@ -75,15 +75,13 @@ python3 /root/semantic_lidar.py
 
 ## Rozpoznawane oznakowania poziome
 
-| Typ oznakowania        | Kolor w RViz2     | Warunki rozpoznania (przykładowe)      |
-|------------------------|-------------------|----------------------------------------|
-| Linia stopu           | Czerwony          | Wąska, długa linia                     |
-| Strzałka w lewo       | Zielony           | Pionowa strzałka                       |
-| Strzałka w prawo      | Niebieski         | Pozioma strzałka                       |
-| Strzałka prosto       | Żółty             | Proporcjonalnie szeroka i niska       |
-| Pasy dla pieszych     | Błękitny          | Długi i szeroki prostokąt              |
-| Linia ciągła (custom) | Biały             | Długa linia (klaster tagu 24)         |
-| Inne (TAG 24)         | Różowy            | Nierozpoznane klastry                  |
+| Typ oznakowania       | Kolor (RGB) |
+|------------------------|-------------|
+| Strzałka w lewo       | Zielony     |
+| Strzałka w prawo      | Niebieski   |
+| Linia STOP            | Czerwony    |
+| Pasy dla pieszych     | Błękitny    |
+| Nierozpoznane         | Różowy      |
 
 ---
 
