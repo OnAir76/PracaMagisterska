@@ -74,6 +74,21 @@ source /opt/ros/humble/setup.bash
 python3 /root/semantic_lidar.py
 ```
 ---
+### 5. Konfiguracja Skryptu
+
+Najważniejsze parametry, które można modyfikować, znajdują się na początku pliku semantic_lidar_processor.py:
+INTERESTING_TAGS: Zbiór tagów semantycznych do analizy. Obecnie ustawiony na {24} (RoadLine).
+DBSCAN_EPS: Maksymalna odległość między punktami w klastrze. Zmniejszenie wartości spowoduje tworzenie mniejszych, gęstszych klastrów.
+DBSCAN_MIN_SAMPLES: Minimalna liczba punktów do utworzenia klastra.
+TEMPLATE_MATCH_THRESHOLD: Próg pewności (od 0.0 do 1.0), powyżej którego detekcja jest uznawana za prawidłową.
+SAVE_DEBUG_IMAGES: Ustaw na True, aby zapisywać obrazy klastrów do folderu zdefiniowanego w DEBUG_SAVE_PATH.
+
+### 6. Znane Problemy i Ograniczenia
+
+Detekcja napisu "STOP" i przejść dla pieszych jest problematyczna. Algorytm klasteryzacji ma trudności z połączeniem nieciągłych elementów (osobne litery, pasy "zebry") w jeden spójny obiekt, co prowadzi do błędnej klasyfikacji.
+
+Wyniki są zależne od parametrów DBSCAN oraz progu TEMPLATE_MATCH_THRESHOLD, które mogą wymagać dostrojenia w zależności od scenariusza i warunków w symulacji.
+
 
 ## Efekt działania
 
@@ -100,19 +115,20 @@ Wykryto 1 klastrów typu: stop_line
 ---
 
 ## Zrzuty ekranu
-- `arrow_left.png` – wykryta strzałka w lewo
+- wykryta strzałka w lewo i prawo 
+![image](https://github.com/user-attachments/assets/447d938f-536f-458e-b98a-e4786b9dbd62)
 
+- Informacja o wykryciu strzałki w prawo
+![image](https://github.com/user-attachments/assets/a3b4850f-e767-40fb-a737-88c783c6d01e)
 
-![image](https://github.com/user-attachments/assets/337c0168-5909-4fa5-8c9b-c71171c42b45)
-- `arrow_right.png` – wykryta strzałka w prawo
+- Informacja o wykryciu strzałki w lewo
+![image](https://github.com/user-attachments/assets/d520844c-85bf-4454-be78-af526ae1f441)
 
-  
-![image](https://github.com/user-attachments/assets/3471f653-41c8-41a4-8ab1-cec5d2af76bc)
-- `stop_line.png` – wykryta linia STOP
-  
-  
-![image](https://github.com/user-attachments/assets/8f3184f1-4907-4637-b949-7e214a6211df)
-- `pedestrian_crossing.png` – wykryte pasy
+- Wzrzec strzałki w prawo
+![arrow_right](https://github.com/user-attachments/assets/e68b5374-f61d-411e-ba58-2c9dc6464ba1)
+
+- Wzorzec strzałki w lewo
+![arrow_left](https://github.com/user-attachments/assets/bd47b800-22c7-4b35-bcc8-64025cdbe2a2)
 
 ---
 
