@@ -77,11 +77,11 @@ python3 /root/semantic_lidar.py
 ### 5. Konfiguracja Skryptu
 
 Najważniejsze parametry, które można modyfikować, znajdują się na początku pliku semantic_lidar_processor.py:
-INTERESTING_TAGS: Zbiór tagów semantycznych do analizy. Obecnie ustawiony na {24} (RoadLine).
-DBSCAN_EPS: Maksymalna odległość między punktami w klastrze. Zmniejszenie wartości spowoduje tworzenie mniejszych, gęstszych klastrów.
-DBSCAN_MIN_SAMPLES: Minimalna liczba punktów do utworzenia klastra.
-TEMPLATE_MATCH_THRESHOLD: Próg pewności (od 0.0 do 1.0), powyżej którego detekcja jest uznawana za prawidłową.
-SAVE_DEBUG_IMAGES: Ustaw na True, aby zapisywać obrazy klastrów do folderu zdefiniowanego w DEBUG_SAVE_PATH.
+- INTERESTING_TAGS: Zbiór tagów semantycznych do analizy. Obecnie ustawiony na {24} (RoadLine).
+- DBSCAN_EPS: Maksymalna odległość między punktami w klastrze. Zmniejszenie wartości spowoduje tworzenie mniejszych, gęstszych klastrów.
+- BSCAN_MIN_SAMPLES: Minimalna liczba punktów do utworzenia klastra.
+- TEMPLATE_MATCH_THRESHOLD: Próg pewności (od 0.0 do 1.0), powyżej którego detekcja jest uznawana za prawidłową.
+- SAVE_DEBUG_IMAGES: Ustaw na True, aby zapisywać obrazy klastrów do folderu zdefiniowanego w DEBUG_SAVE_PATH.
 
 ### 6. Znane Problemy i Ograniczenia
 
