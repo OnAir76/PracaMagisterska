@@ -83,7 +83,7 @@ Najważniejsze parametry, które można modyfikować, znajdują się na początk
 - TEMPLATE_MATCH_THRESHOLD: Próg pewności (od 0.0 do 1.0), powyżej którego detekcja jest uznawana za prawidłową.
 - SAVE_DEBUG_IMAGES: Ustaw na True, aby zapisywać obrazy klastrów do folderu zdefiniowanego w DEBUG_SAVE_PATH.
 
-### 6. Znane Problemy i Ograniczenia
+### 6. Problemy i Ograniczenia
 
 Detekcja napisu "STOP" i przejść dla pieszych jest problematyczna. Algorytm klasteryzacji ma trudności z połączeniem nieciągłych elementów (osobne litery, pasy "zebry") w jeden spójny obiekt, co prowadzi do błędnej klasyfikacji.
 
